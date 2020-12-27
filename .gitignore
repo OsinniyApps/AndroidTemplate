@@ -61,6 +61,13 @@ freeline.py
 freeline/
 freeline_project_description.json
 
+# lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+# lint/reports/
+
 
 ### Android Patch ###
 gen-external-apklibs
