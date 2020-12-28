@@ -1,17 +1,19 @@
 object Sdk {
     const val MIN_SDK_VERSION = 21
-    const val TARGET_SDK_VERSION = 29
-    const val COMPILE_SDK_VERSION = 29
+    const val TARGET_SDK_VERSION = 30
+    const val COMPILE_SDK_VERSION = 30
 }
 
 object Versions {
-    const val ANDROIDX_TEST_EXT = "1.1.2"
-    const val ANDROIDX_TEST = "1.3.0"
+    const val CORE_KTX = "1.2.0"
     const val APPCOMPAT = "1.2.0"
     const val CONSTRAINT_LAYOUT = "2.0.2"
-    const val CORE_KTX = "1.2.0"
-    const val ESPRESSO_CORE = "3.3.0"
+    const val MATERIAL = "1.2.1"
+    const val LEAK_CANARY = "2.6"
     const val JUNIT = "4.13.1"
+    const val ANDROIDX_TEST = "1.3.0"
+    const val ANDROIDX_TEST_EXT = "1.1.2"
+    const val ESPRESSO_CORE = "3.3.0"
     const val KTLINT = "0.39.0"
 }
 
@@ -24,9 +26,17 @@ object BuildPluginsVersion {
 }
 
 object SupportLibs {
+    const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
     const val ANDROIDX_CONSTRAINT_LAYOUT = "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_LAYOUT}"
-    const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
+}
+
+object UILibs {
+    const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
+}
+
+object DebugLibs {
+    const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:${Versions.LEAK_CANARY}"
 }
 
 object TestingLib {
