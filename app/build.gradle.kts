@@ -69,4 +69,4 @@ dependencies {
     androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
 }
 
-fun Project.propertyOrThrow(name: String): String = findProperty(name) ?: throw RuntimeException("Property '$name' not found")
+fun Project.propertyOrThrow(name: String): String = findProperty(name) as String? ?: throw RuntimeException("Property '$name' not found")
