@@ -8,10 +8,14 @@ plugins {
 android {
     signingConfigs {
         create("upload") {
-            storeFile = file(propertyOrThrow("storeFile"))
-            storePassword = propertyOrThrow("storePassword")
-            keyAlias = propertyOrThrow("keyAlias")
-            keyPassword = propertyOrThrow("keyPassword")
+            val keystorePropertiesFile = rootProject.file("keystore.properties")
+            val keystoreProperties = Properties()
+            keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+
+            storeFile = file(keystoreProperties["storeFile"]) as String
+            storePassword = keystoreProperties["storePassword"] as String
+            keyAlias = keystoreProperties["keyAlias"] as String
+            keyPassword = keystoreProperties["keyPassword"] as String
         }
     }
     
@@ -68,5 +72,3 @@ dependencies {
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
     androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
 }
-
-fun Project.propertyOrThrow(name: String): String = findProperty(name) as String? ?: throw RuntimeException("Property '$name' not found")
