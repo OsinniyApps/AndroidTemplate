@@ -58,17 +58,25 @@ android {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk7"))
+//     kotlin std lib
+    implementation(kotlin("stdlib"))
 
     implementation(project(":library-android"))
     implementation(project(":library-kotlin"))
 
+//     androidx libs
+    implementation(SupportLibs.ANDROIDX_CORE_KTX)
     implementation(SupportLibs.ANDROIDX_APPCOMPAT)
     implementation(SupportLibs.ANDROIDX_CONSTRAINT_LAYOUT)
-    implementation(SupportLibs.ANDROIDX_CORE_KTX)
+    
+//     material lib
+    implementation(UILibs.MATERIAL)
 
+//     debug libs
+    debugImplementation(DebugLibs.LEAK_CANARY)
+
+//     test libs
     testImplementation(TestingLib.JUNIT)
-
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
     androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
