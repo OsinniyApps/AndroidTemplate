@@ -18,7 +18,7 @@ android {
             keyPassword = keystoreProperties["keyPassword"] as String
         }
     }
-    
+
     compileSdkVersion(Sdk.COMPILE_SDK_VERSION)
 
     defaultConfig {
