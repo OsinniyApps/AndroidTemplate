@@ -68,7 +68,7 @@ dependencies {
     implementation(SupportLibs.ANDROIDX_CORE_KTX)
     implementation(SupportLibs.ANDROIDX_APPCOMPAT)
     implementation(SupportLibs.ANDROIDX_CONSTRAINT_LAYOUT)
-    
+
 //     material lib
     implementation(UILibs.MATERIAL)
 
