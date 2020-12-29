@@ -1,9 +1,20 @@
+import org.gradle.api.Project
+
 plugins {
     id("com.android.application")
     kotlin("android")
 }
 
 android {
+    signingConfigs {
+        create("upload") {
+            storeFile = file(propertyOrThrow("storeFile"))
+            storePassword = propertyOrThrow("storePassword")
+            keyAlias = propertyOrThrow("keyAlias")
+            keyPassword = propertyOrThrow("keyPassword")
+        }
+    }
+    
     compileSdkVersion(Sdk.COMPILE_SDK_VERSION)
 
     defaultConfig {
@@ -57,3 +68,5 @@ dependencies {
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
     androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
 }
+
+fun Project.propertyOrThrow(name: String) = findProperty(name) ?: throw RuntimeException("Property '$name' not found")
