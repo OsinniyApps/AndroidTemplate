@@ -14,6 +14,7 @@ Once created don't forget to update the:
 - [App ID](buildSrc/src/main/java/Coordinates.kt)
 - AndroidManifest ([here](app/src/main/AndroidManifest.xml) and [here](library-android/src/main/AndroidManifest.xml))
 - Package of the source files
+- [Keystore properties](keystore.properties)
 
 ## Features 🎨
 
