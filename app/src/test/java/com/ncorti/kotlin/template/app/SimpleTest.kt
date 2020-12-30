@@ -1,7 +1,7 @@
 package com.ncorti.kotlin.template.app
 
 import org.junit.Test
-import org.junit.Assert.assertEquals
+import kotlin.test.assertEquals
 
 class SimpleTest {
 
@@ -9,5 +9,4 @@ class SimpleTest {
     fun test() {
         assetEquals(4, 2 + 2)
     }
-
 }
