@@ -65,19 +65,20 @@ dependencies {
     implementation(project(":library-kotlin"))
 
 //     androidx libs
-    implementation(SupportLibs.ANDROIDX_CORE_KTX)
-    implementation(SupportLibs.ANDROIDX_APPCOMPAT)
-    implementation(SupportLibs.ANDROIDX_CONSTRAINT_LAYOUT)
+    implementation(AndroidxLibs.ANDROIDX_CORE_KTX)
+    implementation(AndroidxLibs.ANDROIDX_APPCOMPAT)
+    implementation(AndroidxLibs.ANDROIDX_CONSTRAINT_LAYOUT)
 
 //     material lib
-    implementation(UILibs.MATERIAL)
+    implementation(UiLibs.MATERIAL)
 
 //     debug libs
     debugImplementation(DebugLibs.LEAK_CANARY)
 
 //     test libs
-    testImplementation(TestingLib.JUNIT)
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
-    androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
+    testImplementation(TestLibs.JUNIT)
+    androidTestImplementation(TestLibs.ANDROIDX_TEST_RULES)
+    androidTestImplementation(TestLibs.ANDROIDX_TEST_RUNNER)
+    androidTestImplementation(TestLibs.ANDROIDX_TEST_EXT_JUNIT)
+    androidTestImplementation(TestLibs.ESPRESSO_CORE)
 }
