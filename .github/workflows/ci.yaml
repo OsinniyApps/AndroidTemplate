@@ -12,17 +12,17 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build/Check
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Validate gradle wrapper
+      - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Setup java
+      - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: 8
@@ -33,22 +33,22 @@ jobs:
           path: ~/.gradle/caches/
           key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
-      - name: Build
+      - name: Build/Check
         run: ./gradlew build check publishToMavenLocal --continue --warning-mode all
 
 
   unit-tests:
-    name: Unit tests
+    name: Unit Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Validate gradle wrapper
+      - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Setup java
+      - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: 8
@@ -59,12 +59,12 @@ jobs:
           path: ~/.gradle/caches/
           key: unit-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
-      - name: Unit tests
-        run: ./gradlew testDebugUnitTest
+      - name: Unit Tests
+        run: ./gradlew testDebugUnitTest --warning-mode all
 
 
   instrumentation-tests:
-    name: Instrumentation tests
+    name: Instrumentation Tests
     runs-on: macOS-latest
     timeout-minutes: 60
     strategy:
@@ -75,10 +75,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Validate gradle wrapper
+      - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Setup java
+      - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: 8
@@ -89,9 +89,9 @@ jobs:
           path: ~/.gradle/caches
           key: instrumentation-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
-      - name: Instrumentation tests
+      - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
           arch: x86
-          script: ./gradlew connectedDebugAndroidTest
+          script: ./gradlew connectedDebugAndroidTest --warning-mode all
