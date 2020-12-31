@@ -7,9 +7,9 @@ plugins {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk7"))
+    implementation(kotlin("stdlib"))
 
-    testImplementation(TestingLib.JUNIT)
+    testImplementation(TestLibs.JUNIT)
 }
 
 java {
