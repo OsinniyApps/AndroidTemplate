@@ -8,5 +8,6 @@ class SimpleTest {
     @Test
     fun test() {
         assertNull(null)
+        throw RuntimeException("Stub!")
     }
 }
