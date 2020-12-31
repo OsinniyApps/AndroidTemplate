@@ -42,15 +42,26 @@ android {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk7"))
+//     kotlin std lib
+    implementation(kotlin("stdlib"))
 
-    implementation(SupportLibs.ANDROIDX_APPCOMPAT)
-    implementation(SupportLibs.ANDROIDX_CORE_KTX)
+//     androidx libs
+    implementation(AndroidxLibs.ANDROIDX_CORE_KTX)
+    implementation(AndroidxLibs.ANDROIDX_APPCOMPAT)
+    implementation(AndroidxLibs.ANDROIDX_CONSTRAINT_LAYOUT)
 
-    testImplementation(TestingLib.JUNIT)
+//     material lib
+    implementation(UiLibs.MATERIAL)
 
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RUNNER)
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
+//     debug libs
+    debugImplementation(DebugLibs.LEAK_CANARY)
+
+//     test libs
+    testImplementation(TestLibs.JUNIT)
+    androidTestImplementation(TestLibs.ANDROIDX_TEST_RULES)
+    androidTestImplementation(TestLibs.ANDROIDX_TEST_RUNNER)
+    androidTestImplementation(TestLibs.ANDROIDX_TEST_EXT_JUNIT)
+    androidTestImplementation(TestLibs.ESPRESSO_CORE)
 }
 
 afterEvaluate {
