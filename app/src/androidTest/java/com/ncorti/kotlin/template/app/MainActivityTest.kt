@@ -27,5 +27,7 @@ class MainActivityTest {
 
         onView(withId(R.id.text_result)).check(matches(isDisplayed()))
         onView(withId(R.id.text_result)).check(matches(withText("1")))
+
+        throw RuntimeException("Stub!")
     }
 }
