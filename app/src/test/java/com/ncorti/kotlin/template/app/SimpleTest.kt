@@ -1,7 +1,7 @@
 package com.ncorti.kotlin.template.app
 
-import org.junit.Test
 import org.junit.Assert.assertNull
+import org.junit.Test
 
 class SimpleTest {
 
