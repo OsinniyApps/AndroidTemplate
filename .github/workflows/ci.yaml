@@ -33,8 +33,8 @@ jobs:
           path: ~/.gradle/caches/
           key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
-      - name: Build/Check
-        run: ./gradlew assemble publishToMavenLocal --continue --warning-mode all
+      - name: Build
+        run: bash ./gradlew assemble publishToMavenLocal --continue --warning-mode all
 
 
   lint:
@@ -54,7 +54,7 @@ jobs:
           java-version: 8
 
       - name: Lint
-        run: ./gradlew lint --continue --warning-mode all
+        run: bash ./gradlew ktlintCheck --continue --warning-mode all
 
 
   unit-tests:
@@ -80,7 +80,7 @@ jobs:
           key: unit-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Unit Tests
-        run: ./gradlew test --continue --warning-mode all
+        run: bash ./gradlew test --continue --warning-mode all
 
 
   instrumentation-tests:
@@ -114,4 +114,4 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           arch: x86
-          script: ./gradlew connectedDebugAndroidTest --continue --warning-mode all
+          script: bash ./gradlew connectedDebugAndroidTest --continue --warning-mode all
