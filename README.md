@@ -1,6 +1,6 @@
 # kotlin-android-template 🤖
 
-[![Use this template](https://img.shields.io/badge/from-kotlin--android--template-brightgreen?logo=dropbox)](https://github.com/OsinniyApps/AndroidTemplate/generate) ![CI](https://github.com/OsinniyApps/AndroidTemplate/workflows/CI/badge.svg)  ![License](https://img.shields.io/github/license/OsinniyApps/AndroidTemplate.svg) ![Language](https://img.shields.io/github/languages/top/OsinniyApps/AndroidTemplate?color=blue&logo=kotlin)
+[![Use this template](https://img.shields.io/badge/from-AndroidTemplate-brightgreen?logo=dropbox)](https://github.com/OsinniyApps/AndroidTemplate/generate) ![CI](https://github.com/OsinniyApps/AndroidTemplate/workflows/CI/badge.svg)  ![License](https://img.shields.io/github/license/OsinniyApps/AndroidTemplate.svg) ![Language](https://img.shields.io/github/languages/top/OsinniyApps/AndroidTemplate?color=blue&logo=kotlin)
 
 A simple Github template that lets you create an **Android/Kotlin** project and be up and running in a **few seconds**. 
 
