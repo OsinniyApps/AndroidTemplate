@@ -6,17 +6,17 @@ object Sdk {
 
 object BuildPluginsVersion {
     const val KOTLIN = "1.4.21"
-    const val AGP = "4.1.0"
-    const val KTLINT = "0.39.0"
+    const val AGP = "4.1.1"
+    const val KTLINT = "0.40.0"
     const val KTLINT_GRADLE = "9.4.1"
     const val DETEKT = "1.14.2"
     const val VERSIONS_PLUGIN = "0.33.0"
 }
 
 object AndroidxLibs {
-    const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:1.2.0"
+    const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:1.3.2"
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:1.2.0"
-    const val ANDROIDX_CONSTRAINT_LAYOUT = "com.android.support.constraint:constraint-layout:2.0.2"
+    const val ANDROIDX_CONSTRAINT_LAYOUT = "com.android.support.constraint:constraint-layout:2.0.4"
 }
 
 object UiLibs {
