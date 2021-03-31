@@ -38,25 +38,21 @@ android {
     lintOptions {
         isWarningsAsErrors = true
         isAbortOnError = true
+        fatal("StopShip")
     }
 }
 
 dependencies {
-//     kotlin std lib
     implementation(kotlin("stdlib"))
 
-//     androidx libs
     implementation(AndroidxLibs.ANDROIDX_CORE_KTX)
     implementation(AndroidxLibs.ANDROIDX_APPCOMPAT)
     implementation(AndroidxLibs.ANDROIDX_CONSTRAINT_LAYOUT)
 
-//     material lib
     implementation(UiLibs.MATERIAL)
 
-//     debug libs
     debugImplementation(DebugLibs.LEAK_CANARY)
 
-//     test libs
     testImplementation(TestLibs.JUNIT)
     androidTestImplementation(TestLibs.ANDROIDX_TEST_RULES)
     androidTestImplementation(TestLibs.ANDROIDX_TEST_RUNNER)

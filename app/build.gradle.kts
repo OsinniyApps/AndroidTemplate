@@ -1,4 +1,3 @@
-import java.io.FileInputStream
 import java.util.Properties
 
 plugins {
@@ -9,14 +8,14 @@ plugins {
 android {
     signingConfigs {
         create("upload") {
-            val keystorePropertiesFile = rootProject.file("keystore.properties")
-            val keystoreProperties = Properties()
-            keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+            with(Properties()) {
+                load(rootProject.file("keystore.properties").inputStream())
 
-            storeFile = file(keystoreProperties["storeFile"] as String)
-            storePassword = keystoreProperties["storePassword"] as String
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = file(get("storeFile") as String)
+                storePassword = get("storePassword") as String
+                keyAlias = get("keyAlias") as String
+                keyPassword = get("keyPassword") as String
+            }
         }
     }
 
@@ -40,10 +39,7 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
@@ -54,28 +50,26 @@ android {
     lintOptions {
         isWarningsAsErrors = true
         isAbortOnError = true
+        fatal("StopShip")
     }
 }
 
 dependencies {
-//     kotlin std lib
     implementation(kotlin("stdlib"))
 
     implementation(project(":library-android"))
     implementation(project(":library-kotlin"))
 
-//     androidx libs
+    implementation(KotlinLibs.KOTLINX_COROUTINES)
+
     implementation(AndroidxLibs.ANDROIDX_CORE_KTX)
     implementation(AndroidxLibs.ANDROIDX_APPCOMPAT)
     implementation(AndroidxLibs.ANDROIDX_CONSTRAINT_LAYOUT)
 
-//     material lib
     implementation(UiLibs.MATERIAL)
 
-//     debug libs
     debugImplementation(DebugLibs.LEAK_CANARY)
 
-//     test libs
     testImplementation(TestLibs.JUNIT)
     androidTestImplementation(TestLibs.ANDROIDX_TEST_RULES)
     androidTestImplementation(TestLibs.ANDROIDX_TEST_RUNNER)
