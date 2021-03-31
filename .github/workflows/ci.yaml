@@ -30,7 +30,11 @@ jobs:
       - name: Cache
         uses: actions/cache@v2
         with:
-          path: ~/.gradle/caches/
+          path: |
+            ~/build
+            ~/.gradle
+            ~/**/build/
+            ~/**/.gradle/
           key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Build
@@ -53,8 +57,48 @@ jobs:
         with:
           java-version: 8
 
+      - name: Cache
+          uses: actions/cache@v2
+          with:
+            path: |
+              ~/build
+              ~/.gradle
+              ~/**/build/
+              ~/**/.gradle/
+            key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
+
       - name: Lint
-        run: bash ./gradlew ktlintCheck --continue --warning-mode all
+        run: bash ./gradlew detekt ktlintCheck --continue --warning-mode all
+
+
+  dependencies:
+    name: Dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+
+      - name: Cache
+          uses: actions/cache@v2
+          with:
+            path: |
+              ~/build
+              ~/.gradle
+              ~/**/build/
+              ~/**/.gradle/
+            key: dependencies-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
+
+      - name: Dependencies
+        run: bash ./gradlew dependencies app:dependencies library-kotlin:dependencies library-android:dependencies dependencyUpdates --continue --warning-mode all
 
 
   unit-tests:
@@ -76,7 +120,11 @@ jobs:
       - name: Cache
         uses: actions/cache@v2
         with:
-          path: ~/.gradle/caches/
+          path: |
+            ~/build
+            ~/.gradle
+            ~/**/build/
+            ~/**/.gradle/
           key: unit-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Unit Tests
@@ -106,7 +154,11 @@ jobs:
       - name: Cache
         uses: actions/cache@v2
         with:
-          path: ~/.gradle/caches
+          path: |
+            ~/build
+            ~/.gradle
+            ~/**/build/
+            ~/**/.gradle/
           key: instrumentation-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Instrumentation Tests
