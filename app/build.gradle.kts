@@ -1,4 +1,4 @@
-import java.util.Properties
+import java.util.*
 
 plugins {
     id("com.android.application")
@@ -6,18 +6,7 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        create("upload") {
-            with(Properties()) {
-                load(rootProject.file("keystore.properties").inputStream())
-
-                storeFile = file(get("storeFile") as String)
-                storePassword = get("storePassword") as String
-                keyAlias = get("keyAlias") as String
-                keyPassword = get("keyPassword") as String
-            }
-        }
-    }
+    signingConfigs.load()
 
     compileSdkVersion(Sdk.COMPILE_SDK_VERSION)
 
@@ -28,6 +17,9 @@ android {
         applicationId = AppCoordinates.APP_ID
         versionCode = AppCoordinates.APP_VERSION_CODE
         versionName = AppCoordinates.APP_VERSION_NAME
+
+        resConfigs("en")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,8 +30,17 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
+//            uncomment when keystore will be ready
+//            signingConfig = signingConfigs.getByName("upload")
+        }
+
+        getByName("debug") {
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 
@@ -75,4 +76,17 @@ dependencies {
     androidTestImplementation(TestLibs.ANDROIDX_TEST_RUNNER)
     androidTestImplementation(TestLibs.ANDROIDX_TEST_EXT_JUNIT)
     androidTestImplementation(TestLibs.ESPRESSO_CORE)
+}
+
+fun NamedDomainObjectContainer<com.android.build.gradle.internal.dsl.SigningConfig>.load() {
+    create("upload") {
+        with(Properties()) {
+            load(rootProject.file("keystore.properties").inputStream())
+
+            storeFile = file(get("storeFile") as String)
+            storePassword = get("storePassword") as String
+            keyAlias = get("keyAlias") as String
+            keyPassword = get("keyPassword") as String
+        }
+    }
 }

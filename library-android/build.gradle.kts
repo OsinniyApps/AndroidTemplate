@@ -16,6 +16,8 @@ android {
         versionCode = LibraryAndroidCoordinates.LIBRARY_VERSION_CODE
         versionName = LibraryAndroidCoordinates.LIBRARY_VERSION
 
+        resConfigs("en")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -27,11 +29,13 @@ android {
 
     buildTypes {
         getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+
+        getByName("debug") {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            isShrinkResources = false
         }
     }
 
