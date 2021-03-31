@@ -1,4 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("com.android.application") apply false
@@ -52,6 +53,13 @@ tasks {
     withType<DependencyUpdatesTask> {
         rejectVersionIf {
             candidate.version.isStableVersion().not()
+        }
+    }
+
+    withType<KotlinCompile> {
+        kotlinOptions.apply {
+            jvmTarget = "1.8"
+            languageVersion = "1.8"
         }
     }
 }

@@ -61,11 +61,15 @@ dependencies {
     implementation(project(":library-android"))
     implementation(project(":library-kotlin"))
 
-    implementation(KotlinLibs.KOTLINX_COROUTINES)
+    implementation(KotlinLibs.KOTLINX_COROUTINES_ANDROID)
 
     implementation(AndroidxLibs.ANDROIDX_CORE_KTX)
     implementation(AndroidxLibs.ANDROIDX_APPCOMPAT)
     implementation(AndroidxLibs.ANDROIDX_CONSTRAINT_LAYOUT)
+    implementation(AndroidxLibs.ANDROIDX_LIFECYCLE_KTX)
+    implementation(AndroidxLibs.ANDROIDX_VIEW_MODEL_KTX)
+    implementation(AndroidxLibs.ANDROIDX_ACTIVITY_KTX)
+    implementation(AndroidxLibs.ANDROIDX_FRAGMENT_KTX)
 
     implementation(UiLibs.MATERIAL)
 
