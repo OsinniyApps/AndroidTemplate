@@ -58,14 +58,14 @@ jobs:
           java-version: 8
 
       - name: Cache
-          uses: actions/cache@v2
-          with:
-            path: |
-              ~/build
-              ~/.gradle
-              ~/**/build/
-              ~/**/.gradle/
-            key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/build
+            ~/.gradle
+            ~/**/build/
+            ~/**/.gradle/
+          key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Lint
         run: bash ./gradlew detekt ktlintCheck --continue --warning-mode all
@@ -88,14 +88,14 @@ jobs:
           java-version: 8
 
       - name: Cache
-          uses: actions/cache@v2
-          with:
-            path: |
-              ~/build
-              ~/.gradle
-              ~/**/build/
-              ~/**/.gradle/
-            key: dependencies-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/build
+            ~/.gradle
+            ~/**/build/
+            ~/**/.gradle/
+          key: dependencies-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Dependencies
         run: bash ./gradlew dependencies app:dependencies library-kotlin:dependencies library-android:dependencies dependencyUpdates --continue --warning-mode all
