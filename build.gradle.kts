@@ -34,6 +34,7 @@ subprojects {
         outputToConsole.set(true)
         ignoreFailures.set(false)
         enableExperimentalRules.set(false)
+        disabledRules.set(setOf("no-wildcard-imports"))
         filter {
             exclude("**/generated/**")
             include("**/kotlin/**")
