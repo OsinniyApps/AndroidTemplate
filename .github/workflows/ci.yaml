@@ -36,7 +36,7 @@ jobs:
             ~/**/build/
             ~/**/.gradle/
             ~/build-cache
-          key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
+          key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/settings.gradle.kts') }}-${{ hashFiles('**/**/build.gradle.kts') }}-${{ hashFiles('**/gradle.properties') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Build
         run: bash ./gradlew assemble --continue --warning-mode all
@@ -67,7 +67,7 @@ jobs:
             ~/**/build/
             ~/**/.gradle/
             ~/build-cache
-          key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
+          key: lint-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/settings.gradle.kts') }}-${{ hashFiles('**/**/build.gradle.kts') }}-${{ hashFiles('**/gradle.properties') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Lint
         run: bash ./gradlew detekt ktlintCheck --continue --warning-mode all
@@ -98,7 +98,7 @@ jobs:
             ~/**/build/
             ~/**/.gradle/
             ~/build-cache
-          key: dependencies-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
+          key: dependencies-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/settings.gradle.kts') }}-${{ hashFiles('**/**/build.gradle.kts') }}-${{ hashFiles('**/gradle.properties') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Dependencies
         run: bash ./gradlew dependencies app:dependencies dependencyUpdates --continue --warning-mode all
@@ -129,7 +129,7 @@ jobs:
             ~/**/build/
             ~/**/.gradle/
             ~/build-cache
-          key: unit-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
+          key: unit-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/settings.gradle.kts') }}-${{ hashFiles('**/**/build.gradle.kts') }}-${{ hashFiles('**/gradle.properties') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Unit Tests
         run: bash ./gradlew test --continue --warning-mode all
@@ -164,7 +164,7 @@ jobs:
             ~/**/build/
             ~/**/.gradle/
             ~/build-cache
-          key: instrumentation-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
+          key: instrumentation-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/settings.gradle.kts') }}-${{ hashFiles('**/**/build.gradle.kts') }}-${{ hashFiles('**/gradle.properties') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
