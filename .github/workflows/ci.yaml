@@ -35,6 +35,7 @@ jobs:
             ~/.gradle
             ~/**/build/
             ~/**/.gradle/
+            ~/build-cache
           key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Build
@@ -65,6 +66,7 @@ jobs:
             ~/.gradle
             ~/**/build/
             ~/**/.gradle/
+            ~/build-cache
           key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Lint
@@ -95,6 +97,7 @@ jobs:
             ~/.gradle
             ~/**/build/
             ~/**/.gradle/
+            ~/build-cache
           key: dependencies-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Dependencies
@@ -125,6 +128,7 @@ jobs:
             ~/.gradle
             ~/**/build/
             ~/**/.gradle/
+            ~/build-cache
           key: unit-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Unit Tests
@@ -159,6 +163,7 @@ jobs:
             ~/.gradle
             ~/**/build/
             ~/**/.gradle/
+            ~/build-cache
           key: instrumentation-tests-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Instrumentation Tests
