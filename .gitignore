@@ -194,3 +194,6 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+# Build cache
+build-cache/
