@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - single-module
   pull_request:
     branches:
-      - '*'
+      - single-module
   workflow_dispatch:
 
 
@@ -38,7 +38,7 @@ jobs:
           key: build-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Build
-        run: bash ./gradlew assemble publishToMavenLocal --continue --warning-mode all
+        run: bash ./gradlew assemble --continue --warning-mode all
 
 
   lint:
@@ -98,7 +98,7 @@ jobs:
           key: dependencies-${{ hashFiles('**/build.gradle.kts') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/src/main/java/Dependencies.kt') }}
 
       - name: Dependencies
-        run: bash ./gradlew dependencies app:dependencies library-kotlin:dependencies library-android:dependencies dependencyUpdates --continue --warning-mode all
+        run: bash ./gradlew dependencies app:dependencies dependencyUpdates --continue --warning-mode all
 
 
   unit-tests:
