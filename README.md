@@ -46,7 +46,7 @@ This template is also using [**detekt**](https://github.com/detekt/detekt) to an
 This template is using [**GitHub Actions**](https://github.com/OsinniyApps/AndroidTemplate/actions) as CI. You don't need to setup any external service and you should have a running CI once you start using this template.
 
 There are currently the following workflows available:
-- [CI](.github/workflows/ci.yaml) - Build (`assemble`, `publishToMavenLocal`), Lint (`ktlintCheck`), Dependencies checks (`dependencies`, `dependencyUpdates`), Unit & Instrumentation tests
+- [CI](.github/workflows/ci.yaml) - Build (`assemble`, `publishToMavenLocal`), Lint (`detekt`, `ktlintCheck`), Dependencies checks (`dependencies`, `dependencyUpdates`), Unit (`test`) & Instrumentation (`connectedDebugAndroidTest`) tests
 
 ## Publishing 🚀
 
