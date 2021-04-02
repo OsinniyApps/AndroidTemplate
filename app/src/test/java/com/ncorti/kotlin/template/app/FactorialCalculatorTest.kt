@@ -1,6 +1,6 @@
-package com.ncorti.kotlin.template.library
+package com.ncorti.kotlin.template.app
 
-import com.ncorti.kotlin.template.library.FactorialCalculator.computeFactorial
+import com.ncorti.kotlin.template.app.FactorialCalculator.computeFactorial
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThrows
 import org.junit.Test

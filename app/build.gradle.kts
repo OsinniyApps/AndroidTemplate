@@ -58,9 +58,6 @@ android {
 dependencies {
     implementation(kotlin("stdlib"))
 
-    implementation(project(":library-android"))
-    implementation(project(":library-kotlin"))
-
     implementation(KotlinLibs.KOTLINX_COROUTINES_ANDROID)
 
     implementation(AndroidxLibs.ANDROIDX_CORE_KTX)

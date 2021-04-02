@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.ncorti.kotlin.template.app.databinding.ActivityMainBinding
-import com.ncorti.kotlin.template.library.FactorialCalculator
-import com.ncorti.kotlin.template.library.android.NotificationUtil
 
 class MainActivity : AppCompatActivity() {
 

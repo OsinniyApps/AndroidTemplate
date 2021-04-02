@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("com.android.application") apply false
-    id("com.android.library") apply false
     kotlin("android") apply false
     id("io.gitlab.arturbosch.detekt") version BuildPluginsVersion.DETEKT
     id("org.jlleitschuh.gradle.ktlint") version BuildPluginsVersion.KTLINT_GRADLE
@@ -11,7 +10,6 @@ plugins {
 }
 
 allprojects {
-    group = PUBLISHING_GROUP
     repositories {
         google()
         mavenCentral()
@@ -62,5 +60,9 @@ tasks {
             jvmTarget = "1.8"
             languageVersion = "1.8"
         }
+    }
+
+    withType<Test> {
+        useJUnitPlatform()
     }
 }

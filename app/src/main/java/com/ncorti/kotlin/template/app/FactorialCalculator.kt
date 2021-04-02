@@ -1,4 +1,4 @@
-package com.ncorti.kotlin.template.library
+package com.ncorti.kotlin.template.app
 
 object FactorialCalculator {
 
